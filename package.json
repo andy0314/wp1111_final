@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/andy0314/wp1111_final",
   "author": "張佑亘 <b10902021@ntu.edu.tw>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "cd frontend && yarn start",
+    "server": "cd backend && yarn server"
+  }
 }
