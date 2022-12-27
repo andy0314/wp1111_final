@@ -9,13 +9,11 @@ import { ContextProvider } from './containers/hooks/useContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <ContextProvider>
-        <App />
-      </ContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <ContextProvider>
+      <App />
+    </ContextProvider>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function

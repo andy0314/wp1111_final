@@ -1,8 +1,6 @@
-import { useData } from './hooks/useContext';
+
 
 const SearchPage = () => {
-
-    const { x } = useData()
 
     return (
         <div>

@@ -5,9 +5,9 @@ const Context = createContext({
 })
 
 const ContextProvider = (props) => {
-    const [x, setx] = useState(0);
+    const [sideBarCollapse, setSideBarCollapse] = useState(true);
     return(
-        <Context.Provider value={{x, setx}}{...props}/>
+        <Context.Provider value={{sideBarCollapse, setSideBarCollapse}}{...props}/>
     )
 }
 

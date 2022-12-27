@@ -6,6 +6,7 @@ import SearchPage from './containers/SearchPage';
 import CourseTable from './containers/CourseTable';
 import CourseList from './containers/CourseList';
 import SideBar from './containers/SideBar';
+import { useData } from './containers/hooks/useContext';
 
 const { Header, Sider, Content } = Layout;
 
@@ -24,14 +25,12 @@ const SideBarWrapper = styled(Sider)`
 `
 
 function App() {
-
-  const navigate = useNavigate()
-
+  const { sideBarCollapse } = useData();
   return (
     <AppWrapper>
       <Layout>
 
-          <SideBarWrapper>
+          <SideBarWrapper collapsed={sideBarCollapse}>
             <SideBar />
           </SideBarWrapper>
 
