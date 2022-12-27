@@ -2,7 +2,7 @@
 
 ## 12/27更新(by 張佑亘)
 
-sidebar完成
+sidebar完成、加入collapse變數
 
 ## 12/26更新(by 張佑亘)
 
