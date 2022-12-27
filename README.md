@@ -3,6 +3,7 @@
 ## 12/27更新(by 張佑亘)
 
 sidebar完成、加入collapse變數
+searchbar工作中
 
 ## 12/26更新(by 張佑亘)
 
