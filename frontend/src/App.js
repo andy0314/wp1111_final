@@ -2,12 +2,12 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
-import HomePage from './HomePage';
-import SearchPage from './SearchPage';
-import CourseTable from './CourseTable';
-import CourseList from './CourseList';
-import SideBar from './SideBar';
-import { useData } from './hooks/useContext';
+import HomePage from './containers/HomePage';
+import SearchPage from './containers/SearchPage';
+import CourseTable from './containers/CourseTable';
+import CourseList from './containers/CourseList';
+import SideBar from './containers/SideBar';
+import { useData } from './containers/hooks/useContext';
 
 const { Header, Sider, Content } = Layout;
 
