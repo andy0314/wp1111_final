@@ -1,4 +1,4 @@
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import styled from 'styled-components';
 
@@ -26,6 +26,7 @@ const SideBarWrapper = styled(Sider)`
 
 function App() {
   const { sideBarCollapse } = useData();
+
   return (
     <AppWrapper>
       <Layout>
