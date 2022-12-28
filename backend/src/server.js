@@ -9,5 +9,15 @@ app.use(cors());
 app.use(express.json())
 app.use('/api', Route);
 
+const url = process.env.MONGO_URL;
+const dboptions = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+};
+
+mongoose.connect(url, dboptions).then((res) => {
+    console.log("mongo db connection created");
+})
+
 const port = process.env.PORT || 4000
 app.listen(port, () => console.log(`Server is up on port ${port}.`))
