@@ -3,6 +3,7 @@
 ## 12/28更新(by 張佑亘)
 
 sidebar加入collapse功能
+架設後端、前端HomePage暫放連線測試
 
 ## 12/27更新(by 張佑亘)
 
