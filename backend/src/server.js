@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import Route from './routes'
+import "dotenv-defaults/config.js";
 
 const app = express();
 
@@ -9,11 +10,13 @@ app.use(cors());
 app.use(express.json())
 app.use('/api', Route);
 
-const url = process.env.MONGO_URL;
+const url = process.env.MONGO_URL
 const dboptions = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 };
+
+mongoose.set("strictQuery", true);
 
 mongoose.connect(url, dboptions).then((res) => {
     console.log("mongo db connection created");

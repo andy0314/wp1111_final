@@ -16,6 +16,12 @@ function getItem(label, key, icon, children, type){
     }
 }
 
+const Wrapper = styled.div`
+    height: 100%;
+    width: 100%;
+    background: ${blue[0]};
+`
+
 const ButtonWrapper = styled.div`
     height: 50px;
     width: 100%;
@@ -51,7 +57,7 @@ const SideBar = () => {
     }
 
     return (
-        <div style={{ height: "100%", width: "100%" }}>
+        <Wrapper>
             <ButtonWrapper>
                 <StyledButton onClick={changeCollapse}>
                     {sideBarCollapse? <MenuUnfoldOutlined/> : <MenuFoldOutlined/>}
@@ -63,7 +69,7 @@ const SideBar = () => {
                 items={items}
                 mode='inline'
             />
-        </div>
+        </Wrapper>
     )
 }
 
