@@ -1,5 +1,9 @@
 # 網服專題開發紀錄
 
+## 12/28更新(by 張佑亘)
+
+sidebar加入collapse功能
+
 ## 12/27更新(by 張佑亘)
 
 sidebar完成、加入collapse變數
