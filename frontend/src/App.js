@@ -28,11 +28,6 @@ const SideBarWrapper = styled(Sider)`
   height: 100vh;
 `
 
-const SearchBarWrapper = styled(Header)`
-  height: 256px;
-  background: ${blue[2]}
-`
-
 function App() {
   const { sideBarCollapse } = useData();
 
@@ -45,9 +40,9 @@ function App() {
           </SideBarWrapper>
 
         <Layout>
-          <SearchBarWrapper>
+          <Header style={{height: '180px', background: blue[2]}}>
             <SearchBar />
-          </SearchBarWrapper>
+          </Header>
 
           <Content>
             <Routes>
