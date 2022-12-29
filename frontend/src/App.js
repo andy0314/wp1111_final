@@ -45,7 +45,7 @@ function App() {
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/search' element={<SearchPage />} />
-              <Route path='/coursedetail' element={<>TODO 課程資訊</>} />
+              <Route path='/coursedetail/:courseyear/:courseid' element={<>TODO 課程資訊</>} />
               <Route path='/coursetable' element={<CourseTable />} />
               <Route path='/courselist' element={<CourseList />} />
               <Route path='*' element={<h1>ERROR</h1>} />

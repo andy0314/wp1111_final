@@ -49,7 +49,7 @@ const SideBar = () => {
         getItem('已選課表', '/coursetable', <TableOutlined />),
         getItem('選課志願序', '/courselist', <OrderedListOutlined />),
         getItem('課程資訊', 'coursedetail', <CommentOutlined />,
-            openedCourses.map((e) => getItem(`${e.teacher}  ${e.name}`, '/coursedetail', null))
+            openedCourses.map((e, i) => getItem(`${e.teacher}  ${e.name}`, '/coursedetail/1101/' + i, null))
         )
     ]
 
