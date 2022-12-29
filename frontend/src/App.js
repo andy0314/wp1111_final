@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
+import { blue } from '@ant-design/colors'
 import styled from 'styled-components';
 
 import HomePage from './containers/HomePage';
@@ -7,6 +8,8 @@ import SearchPage from './containers/SearchPage';
 import CourseTable from './containers/CourseTable';
 import CourseList from './containers/CourseList';
 import SideBar from './containers/SideBar';
+import SearchBar from './containers/SearchBar';
+
 import { useData } from './containers/hooks/useContext';
 
 const { Header, Sider, Content } = Layout;
@@ -25,6 +28,11 @@ const SideBarWrapper = styled(Sider)`
   height: 100vh;
 `
 
+const SearchBarWrapper = styled(Header)`
+  height: 256px;
+  background: ${blue[2]}
+`
+
 function App() {
   const { sideBarCollapse } = useData();
 
@@ -37,10 +45,10 @@ function App() {
           </SideBarWrapper>
 
         <Layout>
-          <Header>
-            台大課程網
-          </Header>
-          
+          <SearchBarWrapper>
+            <SearchBar />
+          </SearchBarWrapper>
+
           <Content>
             <Routes>
               <Route path='/' element={<HomePage />} />
