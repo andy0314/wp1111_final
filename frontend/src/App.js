@@ -7,6 +7,8 @@ import SearchPage from './containers/SearchPage';
 import CourseTable from './containers/CourseTable';
 import CourseList from './containers/CourseList';
 import SideBar from './containers/SideBar';
+import CourseDetail from './containers/CourseDetail';
+
 import { useData } from './containers/hooks/useContext';
 
 const { Header, Sider, Content } = Layout;
@@ -45,7 +47,7 @@ function App() {
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/search' element={<SearchPage />} />
-              <Route path='/coursedetail/:courseyear/:courseid' element={<>TODO 課程資訊</>} />
+              <Route path='/coursedetail/:courseyear/:courseid' element={<CourseDetail/>} />
               <Route path='/coursetable' element={<CourseTable />} />
               <Route path='/courselist' element={<CourseList />} />
               <Route path='*' element={<h1>ERROR</h1>} />
