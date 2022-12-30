@@ -11,6 +11,7 @@ const ContextProvider = (props) => {
             name: name
         }
     }
+    const [searchKey, setSearchKey] = useState('');
     const [sideBarCollapse, setSideBarCollapse] = useState(true);
     const [openedCourses, setOpenedCourses] = useState([
         courseData("教師一", "課程一"),
@@ -22,7 +23,9 @@ const ContextProvider = (props) => {
             sideBarCollapse,
             setSideBarCollapse,
             openedCourses,
-            setOpenedCourses
+            setOpenedCourses,
+            searchKey,
+            setSearchKey
         }}{...props}/>
     )
 }
