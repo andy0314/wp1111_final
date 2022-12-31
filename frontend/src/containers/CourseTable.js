@@ -29,11 +29,12 @@ const CourseTable = () => {
         return (
             <div className="tableContainer" style={tableStyle}>
             {intervals.map((key, day) => 
-                 <Row style={gridStyle} gutter={[8, 8]}>
+                 <Row style={gridStyle} gutter={[8, 8]} key={day}>
                     {weekDays.map((ikey, intv)=>{
+                        const uniquekey = intv*15 + day
                         return (
-                            <Col span={3}>
-                                <Card size="small">{day}
+                            <Col span={3} key={uniquekey}>
+                                <Card size="small">{uniquekey} {ikey} {day}
                                 </Card>
                             </Col>
                         )
