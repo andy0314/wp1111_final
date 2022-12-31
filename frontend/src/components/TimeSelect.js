@@ -3,7 +3,7 @@ import { useFilter } from '../containers/hooks/useFilter.';
 import '../css/TimeFilter.css';
 
 const TimeSelect = () => {
-    const { currTime, setCurrTime, printTime, setTimeFilter } = useFilter();
+    const { currTime, setCurrTime, setTimeFilter } = useFilter();
 
     const handleChange = (cells) => {
         setCurrTime({ cells });
