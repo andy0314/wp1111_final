@@ -41,7 +41,10 @@ function App() {
           </SideBarWrapper>
 
         <Layout>
-          <Header style={{height: '120px', background: blue[2]}}>
+          <Header style={{height: '120px', background: blue[2], position: 'sticky',
+          top: 0,
+          zIndex: 1,
+          width: '100%',}}>
             <SearchBar />
           </Header>
 
