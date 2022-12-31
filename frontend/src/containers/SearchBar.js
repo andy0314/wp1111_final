@@ -17,12 +17,12 @@ const searchOptions = [
 
 const semester = [
     {
-        value: '1111',
-        label: '111-1'
-    },
-    {
         value: '1112',
         label: '111-2'
+    },
+    {
+        value: '1111',
+        label: '111-1'
     }
 ]
 
@@ -71,7 +71,7 @@ const SearchBar = () => {
                     onChange={(e) => setSearchKey(e.target.value)}
                 />
                 <Select 
-                    defaultValue="1111"
+                    defaultValue="1112"
                     size='large'
                     style={{width: '150px'}}
                     onChange={handleSemester}
