@@ -1,6 +1,8 @@
-import { Modal } from "antd";
+import { Collapse, Modal } from "antd";
 import { useData } from "../containers/hooks/useContext";
 import TimeSelect from "./TimeSelect";
+
+const { Panel } = Collapse;
 
 const SearchFilterModal = () =>{
     const{ searchModalOpen, setSearchModalOpen } = useData();
@@ -11,7 +13,14 @@ const SearchFilterModal = () =>{
             footer={null}
             onCancel={() => setSearchModalOpen(false)}
         >
-            <TimeSelect />
+            <Collapse defaultActiveKey={[]}>
+                <Panel header="選擇時段" key="1">
+                    <TimeSelect />
+                </Panel>
+                <Panel header="通識" key="2">
+                    12
+                </Panel>
+            </Collapse>
         </Modal>
     )
 }

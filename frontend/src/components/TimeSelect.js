@@ -3,11 +3,22 @@ import { useFilter } from '../containers/hooks/useFilter.';
 import '../css/TimeFilter.css';
 
 const TimeSelect = () => {
-    const { currTime, setCurrTime, printTime } = useFilter();
+    const { currTime, setCurrTime, printTime, setTimeFilter } = useFilter();
+
     const handleChange = (cells) => {
         setCurrTime({ cells });
-        console.log(cells);
+        let temp = [];
+        for( var j = 1; j <= 6; j++){
+            for( var i = 1; i <= 15; i++ ){
+                if(cells[i][j] === true){
+                    temp.push(( i - 1 ) + 15 * (j - 1));
+                }
+            }
+        }
+        console.log(temp)
+        setTimeFilter(temp)
     }
+
     return(
         <div>
             <TableDragSelect value={currTime.cells} onChange={handleChange}>

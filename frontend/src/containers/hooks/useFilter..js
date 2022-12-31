@@ -26,11 +26,14 @@ const FilterProvider = (props) => {
     const printTime = () => {
         console.log(currTime);
     }
+    const [timeFilter, setTimeFilter] = useState([]);
     return(
         <Context.Provider value={{
             currTime,
             setCurrTime,
-            printTime
+            printTime,
+            timeFilter,
+            setTimeFilter
         }}{...props} />
     )
 }
