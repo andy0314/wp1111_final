@@ -1,5 +1,6 @@
 import { Modal } from "antd";
 import { useData } from "../containers/hooks/useContext";
+import TimeSelect from "./TimeSelect";
 
 const SearchFilterModal = () =>{
     const{ searchModalOpen, setSearchModalOpen } = useData();
@@ -10,7 +11,7 @@ const SearchFilterModal = () =>{
             footer={null}
             onCancel={() => setSearchModalOpen(false)}
         >
-            
+            <TimeSelect />
         </Modal>
     )
 }

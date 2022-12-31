@@ -11,6 +11,7 @@ import SideBar from './containers/SideBar';
 import SearchBar from './containers/SearchBar';
 
 import { useData } from './containers/hooks/useContext';
+import { useFilter } from './containers/hooks/useFilter.';
 
 const { Header, Sider, Content } = Layout;
 
