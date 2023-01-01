@@ -55,9 +55,7 @@ router.get('/coursedetail', async(req, res) =>{
             }
         )
     }
-
-    console.log(output2);
-
+    
     await browser.close();
 
     res.status(200).json({ messages: "message from router", data:{ ACCT: output, score: output2 } })
