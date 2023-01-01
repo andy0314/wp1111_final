@@ -23,17 +23,20 @@ const FilterProvider = (props) => {
             [false, false, false, false, false, false, false],
         ]
     });
-    const printTime = () => {
-        console.log(currTime);
-    }
     const [timeFilter, setTimeFilter] = useState([]);
+    const [generalFilter, setGeneralFilter] = useState([]);
+    const [departFilter, setDepartFilter] = useState([])
     return(
         <Context.Provider value={{
             currTime,
             setCurrTime,
-            printTime,
+
             timeFilter,
-            setTimeFilter
+            setTimeFilter,
+            generalFilter,
+            setGeneralFilter,
+            departFilter,
+            setDepartFilter
         }}{...props} />
     )
 }
