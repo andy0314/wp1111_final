@@ -17,11 +17,11 @@ const searchOptions = [
 
 const semester = [
     {
-        value: '1112',
+        value: '111-2',
         label: '111-2'
     },
     {
-        value: '1111',
+        value: '111-1',
         label: '111-1'
     }
 ]

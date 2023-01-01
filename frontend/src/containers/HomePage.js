@@ -1,9 +1,15 @@
 import api from "../api"
-//TODO 主畫面
+
 const HomePage = () => {
     const test = async () =>{
-        const { data: { messages } } = await api.get('/test/test');
+        const { data: { messages, data } } = await api.get('/crawler/coursedetail',{
+            params: {
+                semester: "111-2",
+                courseId: "97001"
+            }
+        });
         console.log(messages);
+        console.log(data);
     }
     return (
         <div>
