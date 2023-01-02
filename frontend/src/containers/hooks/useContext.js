@@ -16,12 +16,13 @@ const ContextProvider = (props) => {
     const [searchModalOpen, setSearchModalOpen] = useState(false);//modal是否開啟
     const [sideBarCollapse, setSideBarCollapse] = useState(true);//sidebar是否開啟
     const [selectedSemester, setSelectedSemester] = useState('1111');//搜尋學期
-
+    const [sortCourse, setSortCourse] = useState(["JavaScript", "Python", "TypeScript", "hello"]); 
     const [openedCourses, setOpenedCourses] = useState([
         courseData("教師一", "課程一"),
         courseData("教師二", "課程二"),
         courseData("教師三", "課程三")
     ]);
+
 
     return(
         <Context.Provider value={{
@@ -36,7 +37,9 @@ const ContextProvider = (props) => {
             searchModalOpen,
             setSearchModalOpen,
             selectedSemester,
-            setSelectedSemester
+            setSelectedSemester,
+            sortCourse,
+            setSortCourse
         }}{...props}/>
     )
 }
