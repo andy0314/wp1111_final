@@ -17,22 +17,20 @@ import { useData } from './hooks/useContext';
 const CourseList = () => {
     const { sortCourse, setSortCourse } = useData();
 
-  return (
-    <DndContext
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-    >
-      <Container className="p-3" style={{"width": "80%"}} align="center">
-        <h3>The order of your disired courses !</h3>
-        <SortableContext
-          items={sortCourse}
-          strategy={verticalListSortingStrategy}
-        >
-          
-          {sortCourse.map(course => <SortableItem key={course} id={course}/>)}
-        </SortableContext>
-      </Container>
-    </DndContext>
+  return (   
+        <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
+            <Container className="p-3" style={{"width": "50%"}} align="center">
+                <div style={{height:'120px' , color: "#91d5ff"}}></div>
+                <h3>The order of your desired courses !</h3>
+                <SortableContext
+                items={sortCourse}
+                strategy={verticalListSortingStrategy}
+                >
+                
+                {sortCourse.map(course => <SortableItem key={course} id={course}/>)}
+                </SortableContext>
+            </Container>
+        </DndContext>   
   );
 
   function handleDragEnd(event) {
@@ -44,6 +42,7 @@ const CourseList = () => {
     if(active.id !== over.id) {
       setSortCourse((items) => {
         const activeIndex = items.indexOf(active.id);
+        console.log(activeIndex);
         const overIndex = items.indexOf(over.id);
         console.log(arrayMove(items, activeIndex, overIndex));
         return arrayMove(items, activeIndex, overIndex);

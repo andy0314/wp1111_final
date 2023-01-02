@@ -48,7 +48,7 @@ function App() {
             <SearchBar />
           </Header>
 
-          <Content>
+          <Content style={{height: 'calc(100%)', position: 'fixed', width:'100%', overflow: "scroll"}}>
             <Routes>
               <Route path='/' element={<HomePage />} />
               <Route path='/search' element={<SearchPage />} />
