@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import { blue } from '@ant-design/colors'
+import { useEffect } from 'react'
 import styled from 'styled-components';
 
 import HomePage from './containers/HomePage';
@@ -9,6 +10,7 @@ import CourseTable from './containers/CourseTable';
 import CourseList from './containers/CourseList';
 import SideBar from './containers/SideBar';
 import SearchBar from './containers/SearchBar';
+import SignIn from './containers/SignIn'
 
 import { useData } from './containers/hooks/useContext';
 import { useFilter } from './containers/hooks/useFilter.';
@@ -30,7 +32,11 @@ const SideBarWrapper = styled(Sider)`
 `
 
 function App() {
-  const { sideBarCollapse } = useData();
+  const { sideBarCollapse, displayStatus, status, signIn } = useData();
+
+  useEffect(() => {
+    displayStatus(status)
+  }, [status])
 
   return (
     <AppWrapper>
@@ -48,13 +54,13 @@ function App() {
             <SearchBar />
           </Header>
 
-          <Content>
+          <Content style={{height: 'calc(100% - 120px)', position: 'fixed', top: "120px", width:'100%', overflow: "scroll"}}>
             <Routes>
-              <Route path='/' element={<HomePage />} />
-              <Route path='/search' element={<SearchPage />} />
-              <Route path='/coursedetail/:courseyear/:courseid' element={<>TODO 課程資訊</>} />
-              <Route path='/coursetable' element={<CourseTable />} />
-              <Route path='/courselist' element={<CourseList />} />
+            <Route path='/' element={signIn ? (<HomePage />) : (<SignIn />)} />
+              <Route path='/search' element={signIn ? (<SearchPage />) : (<SignIn />)} />
+              <Route path='/coursedetail/:courseyear/:courseid' element={signIn ? (<>TODO 課程資訊</>) : (<SignIn />)} />
+              <Route path='/coursetable' element={signIn ? (<CourseTable />) : (<SignIn />)} />
+              <Route path='/courselist' element={signIn ? (<CourseList />) : (<SignIn />)}/>
               <Route path='*' element={<h1>ERROR</h1>} />
             </Routes>
           </Content>
