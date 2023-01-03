@@ -29,6 +29,7 @@ const hanbleTopass = (table) => {
     })
     return topass;
 }
+
 const tableStyle = {
     width: '98%',
     height: '90%',

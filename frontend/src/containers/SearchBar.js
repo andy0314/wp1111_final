@@ -71,7 +71,7 @@ const SearchBar = () => {
                     onChange={(e) => setSearchKey(e.target.value)}
                 />
                 <Select 
-                    defaultValue="1112"
+                    defaultValue="111-2"
                     size='large'
                     style={{width: '150px'}}
                     onChange={handleSemester}
