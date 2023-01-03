@@ -6,32 +6,29 @@ import api from "../api"
 import { ClassNames } from '@emotion/react'
 
 const bcrypt = require('bcryptjs')
-const tableStyle = {
-    width: '98%',
-    height: '90%',
-    padding: '15px',
-    textAlign: 'center',
-    overflow: 'scroll', 
-    padding: '50px',
-    position: 'fixed',
-    top: '80px',
-  };
+
 const SignIn = () => {
     const {
         me, 
         setMe,
         signUp, 
         setSignUp,
-        signIn,
         setSignIn,
         password,
         setPassword,
-        setStatus
+        setStatus,
+        setMyCourse
     } = useData()
 const encryptPW = async (pass) => {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(pass, salt)
     return hash
+}
+const getData = async (myname) => {
+    const { data: { messages, data } } = await api.post('/test/course',{
+        name: myname,
+    });
+    setMyCourse(data)
 }
 const handleSignUp = async (name, pass) => {
     if(!name){
@@ -58,10 +55,10 @@ const handleSignUp = async (name, pass) => {
         })
         console.log("handleSignUp retrieved: ", messages);//
         setSignIn(true)
+        getData(name)
     }
 }
 const handleSignIn = async (name, pass) => {
-    console.log("handleSignIn under construction");//
     if(!name){
         setStatus({
             type: "error",
@@ -91,6 +88,7 @@ const handleSignIn = async (name, pass) => {
                     msg: "Logged in.",                   
                 })
                 setSignIn(true)
+                getData(name)
             }
             else{
                 setStatus({
@@ -104,6 +102,7 @@ const handleSignIn = async (name, pass) => {
     return (
         <div>
             <div style={{height:'120px' , color: "#91d5ff"}}></div>
+            
             {signUp ? (
                 <SignUp 
                     onSignUp={handleSignUp}

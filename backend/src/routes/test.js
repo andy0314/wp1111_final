@@ -1,11 +1,11 @@
 import { Router } from "express";
 import UserModel from '../models/user'
+
 const router = Router()
 
 router.get('/test', async(req, res) => {
     res.status(200).json({ messages: "message from router" });
 })
-
 router.post('/signup', async (req, res) => {
     const { name, password } = req.body
     const user = await UserModel.findOne({ name })
@@ -27,7 +27,6 @@ router.post('/signup', async (req, res) => {
     }
 
 })
-
 router.post('/login', async (req, res) => {
     const { name } = req.body
     const user = await UserModel.findOne({ name })
@@ -36,6 +35,18 @@ router.post('/login', async (req, res) => {
     }
     else {
         res.status(200).json({ messages: "Hash", data: user.password })
+    }
+})
+router.post('/course', async (req, res) => {
+    const { name } = req.body
+    const user = await UserModel.findOne({ name })
+    if(!user){
+        console.log("NoUser", name)
+        res.status(200).json({ messages: "NoUser", data: name })
+    }
+    else {
+        const popedUser = await user.populate([{ path: 'courses', model: 'course', select: ['course_name', 'teacher', 'time_place', 'time_for_filter']}])
+        res.status(200).json({ messages: "gotCouurses", data: popedUser.courses })
     }
 })
 
