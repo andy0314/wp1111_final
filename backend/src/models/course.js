@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const CourseSchema = new Schema({
+    semester: String,
     course_id: String, //流水號
     course_name: String, //課程名稱
     course_id_: String, //識別碼
@@ -22,7 +23,6 @@ const CourseSchema = new Schema({
 
     time_for_filter: Array,
     general: Array,
-    PE: Boolean,
 })
 
 const Course = mongoose.model('course', CourseSchema);
