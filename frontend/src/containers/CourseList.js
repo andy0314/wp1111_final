@@ -19,7 +19,7 @@ const CourseList = () => {
 
   return (   
         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
-            <Container className="p-3" style={{"width": "50%"}} align="center">
+            <Container className="p-3" style={{width: "50%", position: "absolute", left: "25%"}} align="center">
                 <div style={{height:'120px' , color: "#91d5ff"}}></div>
                 <h3>The order of your desired courses !</h3>
                 <SortableContext

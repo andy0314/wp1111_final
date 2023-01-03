@@ -55,8 +55,8 @@ export function SortableItem(props) {
                     </Card>
                 </div>
             </div>
-            <button class="button" style={{float: 'right', alignSelf: 'center'}} onClick={()=>handleRemoveItem(props.id)}>
-                <div class="tiptext">Remove Course</div>
+            <button className="button" style={{float: 'right', alignSelf: 'center'}} onClick={()=>handleRemoveItem(props.id)}>
+                <div className="tiptext">Remove Course</div>
                 <div>
                     < HighlightOffRoundedIcon style={{color: "white"}}/>
                 </div>
