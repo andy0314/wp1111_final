@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const Context = createContext({
     x: 0
+    
 })
 
 const ContextProvider = (props) => {
