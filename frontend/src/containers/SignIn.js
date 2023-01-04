@@ -17,7 +17,8 @@ const SignIn = () => {
         password,
         setPassword,
         setStatus,
-        setMyCourse
+        setMyCourse,
+        setSortCourse,
     } = useData()
 const encryptPW = async (pass) => {
     const salt = await bcrypt.genSalt(10)
@@ -28,7 +29,8 @@ const getData = async (myname) => {
     const { data: { messages, data } } = await api.post('/test/course',{
         name: myname,
     });
-    setMyCourse(data);
+    setMyCourse(data)
+    setSortCourse(data)
 }
 const handleSignUp = async (name, pass) => {
     if(!name){

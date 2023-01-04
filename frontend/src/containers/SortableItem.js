@@ -3,17 +3,10 @@ import { CSS } from "@dnd-kit/utilities";
 import { Card } from 'antd';
 import '../css/List.css'
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
-import { useData } from './hooks/useContext';
 import { positions } from "@mui/system";
 export function SortableItem(props) {
     // props.id
     // JavaScript
-    const { sortCourse, setSortCourse } = useData();
-    const handleRemoveItem = (e) => {
-      console.log(e)
-      setSortCourse(sortCourse.filter(course => course !== e));
-      console.log(1)
-    };
 
     const {
         attributes,
@@ -55,7 +48,7 @@ export function SortableItem(props) {
                     </Card>
                 </div>
             </div>
-            <button className="button" style={{float: 'right', alignSelf: 'center'}} onClick={()=>handleRemoveItem(props.id)}>
+            <button className="button" style={{float: 'right', alignSelf: 'center'}} onClick={()=>props.handleRemoveItem(props.id)}>
                 <div className="tiptext">Remove Course</div>
                 <div>
                     < HighlightOffRoundedIcon style={{color: "white"}}/>

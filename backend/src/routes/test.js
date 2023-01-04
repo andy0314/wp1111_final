@@ -46,8 +46,29 @@ router.post('/course', async (req, res) => {
     }
     else {
         const popedUser = await user.populate([{ path: 'courses', model: 'course', select: ['course_name', 'teacher', 'time_place', 'time_for_filter']}])
-        res.status(200).json({ messages: "gotCouurses", data: popedUser.courses })
+        res.status(200).json({ messages: "gotCourses", data: popedUser.courses })
     }
 })
-
+router.post("/store", async (req, res) => {
+    const { name, course_array } = req.body
+    const user = await UserModel.findOne({ name })
+    if(!user){
+        console.log("NoUser", name)
+        res.status(200).json({ messages: "NoUser", data: name })
+    }
+    else {
+        console.log("store/course_array", course_array)
+        let nCourse = []
+        course_array.map((cors, key) => {
+            nCourse.push(cors._id)
+        })
+        console.log("store/nCourse", nCourse)
+        const Nuser = await UserModel.findOneAndUpdate({ name: user.name }, { courses: nCourse }, {
+            new: true,
+        })
+        console.log("Nuser", Nuser)
+        const PNuser = await Nuser.populate([{ path: 'courses', model: 'course', select: ['course_name', 'teacher', 'time_place', 'time_for_filter']}])
+        res.status(200).json({ messages: "gotCourses", data: PNuser.courses })
+    }
+})
 export default router;
