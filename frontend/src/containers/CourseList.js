@@ -1,5 +1,6 @@
 import '../css/List.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import api from "../api"
 import Container from 'react-bootstrap/Container';
 import {
   DndContext,
@@ -15,8 +16,35 @@ import { SortableItem } from './SortableItem';
 import { useData } from './hooks/useContext';
 
 const CourseList = () => {
-    const { sortCourse, setSortCourse } = useData();
-
+    const { sortCourse, setSortCourse, myCourse, setMyCourse, me } = useData();
+  const handleRemoveItem = (e) => {
+    console.log(e)
+    let nSC = sortCourse.filter(course => course.course_name !== e)
+    setSortCourse(nSC);
+  };
+  const ifSame = () => {
+    console.log("ifSame/sortCourse: ", sortCourse)
+    if(sortCourse.length !== myCourse.length)return false
+    sortCourse.map((cor, key) => {
+      if(cor !== myCourse[key]) return false
+    })
+    return true
+  }
+  const handleSave = async () => {
+    const same = ifSame()
+    if(!same){
+      console.log("Different!")
+      const { data: { messages, data } } = await api.post('/test/store',{
+        name: me,
+        course_array: sortCourse
+    });
+      console.log("messages", messages, "data", data)
+      setMyCourse(sortCourse)
+    }
+    else {
+      console.log("Same!")
+    }
+  }
   return (   
         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd} >
             <Container className="p-3" style={{width: "50%", position: "absolute", left: "25%"}} align="center">
@@ -27,8 +55,9 @@ const CourseList = () => {
                 strategy={verticalListSortingStrategy}
                 >
                 
-                {sortCourse.map(course => <SortableItem key={course} id={course}/>)}
+                {sortCourse.map(course => <SortableItem id={course.course_name} handleRemoveItem={handleRemoveItem}/>)}
                 </SortableContext>
+                <button style={{ position: 'fixed', bottom: '10px', right: '10px',}} onClick={handleSave}>Save</button>
             </Container>
         </DndContext>   
   );
