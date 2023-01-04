@@ -28,7 +28,7 @@ const getData = async (myname) => {
     const { data: { messages, data } } = await api.post('/test/course',{
         name: myname,
     });
-    setMyCourse(data)
+    setMyCourse(data);
 }
 const handleSignUp = async (name, pass) => {
     if(!name){

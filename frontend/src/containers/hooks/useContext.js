@@ -15,11 +15,8 @@ const ContextProvider = (props) => {
             name: name
         }
     }
-    const [searchKey, setSearchKey] = useState('');//關鍵字
-    const [searchType, setSearchType] = useState('coursename');//搜尋種類
     const [searchModalOpen, setSearchModalOpen] = useState(false);//modal是否開啟
     const [sideBarCollapse, setSideBarCollapse] = useState(true);//sidebar是否開啟
-    const [selectedSemester, setSelectedSemester] = useState('1111');//搜尋學期
     const [sortCourse, setSortCourse] = useState(["JavaScript", "Python", "TypeScript", "hello", "C++", 'C', 'react']); 
     const [openedCourses, setOpenedCourses] = useState([
         courseData("教師一", "課程一"),
@@ -59,14 +56,8 @@ const ContextProvider = (props) => {
             setSideBarCollapse,
             openedCourses,
             setOpenedCourses,
-            searchKey,
-            setSearchKey,
-            searchType,
-            setSearchType,
             searchModalOpen,
             setSearchModalOpen,
-            selectedSemester,
-            setSelectedSemester,
             sortCourse,
             setSortCourse,
             me, 

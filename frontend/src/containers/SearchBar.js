@@ -2,6 +2,7 @@ import { blue } from '@ant-design/colors'
 import styled from 'styled-components'
 import { Button, Input, Select } from 'antd'
 import { useData } from './hooks/useContext'
+import { useFilter } from './hooks/useFilter'
 import SearchFilterModal from '../components/SearchFilterModal'
 
 const searchOptions = [
@@ -39,28 +40,23 @@ const InputWrapper = styled.div`
 
 
 const SearchBar = () => {
-    const { searchKey, setSearchKey, setSearchType, setSearchModalOpen, setSelectedSemester } = useData()
+    const { searchKey, setSearchKey, searchType, setSearchType, selectedSemester, setSelectedSemester } = useFilter()
+    const { setSearchModalOpen } = useData();
 
-    const handleSelect = (value) => {
-        setSearchType(value)
-    }
     const handleSearch = () => {
         console.log(`search ${searchKey}`);
     }
     const handleModalOpen = () => {
         setSearchModalOpen(true);
     }
-    const handleSemester = (value) => {
-        setSelectedSemester(value);
-    }
     return (
         <InputWrapper>
             <Input.Group>
                 <Select 
-                    defaultValue="coursename"
+                    value={searchType}
                     size='large'
                     style={{width: '150px'}}
-                    onChange={handleSelect}
+                    onChange={(e) => setSearchType(e.target.value)}
                     options={searchOptions}
                 />
                 <Input.Search 
@@ -71,10 +67,10 @@ const SearchBar = () => {
                     onChange={(e) => setSearchKey(e.target.value)}
                 />
                 <Select 
-                    defaultValue="111-2"
+                    value={selectedSemester}
                     size='large'
                     style={{width: '150px'}}
-                    onChange={handleSemester}
+                    onChange={(e) => setSelectedSemester(e.target.value)}
                     options={semester}
                 />
             </Input.Group>

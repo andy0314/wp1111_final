@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
 import { ContextProvider } from './containers/hooks/useContext';
-import { FilterProvider } from './containers/hooks/useFilter.';
+import { FilterProvider } from './containers/hooks/useFilter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

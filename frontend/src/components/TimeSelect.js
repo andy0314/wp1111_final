@@ -1,5 +1,5 @@
 import TableDragSelect from 'react-table-drag-select'
-import { useFilter } from '../containers/hooks/useFilter.';
+import { useFilter } from '../containers/hooks/useFilter';
 import '../css/TimeFilter.css';
 
 const TimeSelect = () => {

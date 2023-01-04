@@ -1,5 +1,5 @@
 import { Checkbox, Divider, Collapse } from "antd";
-import { useFilter } from "../containers/hooks/useFilter.";
+import { useFilter } from "../containers/hooks/useFilter";
 
 const { Panel } = Collapse;
 

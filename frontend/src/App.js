@@ -13,7 +13,6 @@ import SearchBar from './containers/SearchBar';
 import SignIn from './containers/SignIn'
 
 import { useData } from './containers/hooks/useContext';
-import { useFilter } from './containers/hooks/useFilter.';
 
 const { Header, Sider, Content } = Layout;
 

@@ -1,5 +1,5 @@
 import { Select } from "antd";
-import { useFilter } from "../containers/hooks/useFilter.";
+import { useFilter } from "../containers/hooks/useFilter";
 
 const GeneralEducationSelect = () => {
     const options = [
