@@ -45,7 +45,7 @@ router.post('/course', async (req, res) => {
         res.status(200).json({ messages: "NoUser", data: name })
     }
     else {
-        const popedUser = await user.populate([{ path: 'courses', model: 'course', select: ['course_name', 'teacher', 'time_place', 'time_for_filter', 'course_id']}])
+        const popedUser = await user.populate([{ path: 'courses', model: 'course', select: ['course_name', 'teacher', 'time_place', 'time_for_filter', 'course_id', 'semester']}])
         res.status(200).json({ messages: "gotCourses", data: popedUser.courses })
     }
 })

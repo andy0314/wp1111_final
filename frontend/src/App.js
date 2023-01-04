@@ -11,6 +11,7 @@ import CourseList from './containers/CourseList';
 import SideBar from './containers/SideBar';
 import SearchBar from './containers/SearchBar';
 import SignIn from './containers/SignIn'
+import CourseInfo from './containers/CourseInfo'
 
 import { useData } from './containers/hooks/useContext';
 
@@ -63,7 +64,7 @@ function App() {
             <Routes>
             <Route path='/' element={signIn ? (<HomePage />) : (<SignIn />)} />
               <Route path='/search' element={signIn ? (<SearchPage />) : (<SignIn />)} />
-              <Route path='/coursedetail/:courseyear/:courseid' element={signIn ? (<>TODO 課程資訊</>) : (<SignIn />)} />
+              <Route path='/coursedetail/:courseyear/:courseid' element={signIn ? (<CourseInfo />) : (<SignIn />)} />
               <Route path='/coursetable' element={signIn ? (<CourseTable />) : (<SignIn />)} />
               <Route path='/courselist' element={signIn ? (<CourseList />) : (<SignIn />)}/>
               <Route path='*' element={<h1>ERROR</h1>} />
