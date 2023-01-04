@@ -40,12 +40,9 @@ const InputWrapper = styled.div`
 
 
 const SearchBar = () => {
-    const { searchKey, setSearchKey, searchType, setSearchType, selectedSemester, setSelectedSemester } = useFilter()
+    const { searchKey, setSearchKey, searchType, setSearchType, selectedSemester, setSelectedSemester, handleSearch } = useFilter()
     const { setSearchModalOpen } = useData();
 
-    const handleSearch = () => {
-        console.log(`search ${searchKey}`);
-    }
     const handleModalOpen = () => {
         setSearchModalOpen(true);
     }
@@ -56,7 +53,7 @@ const SearchBar = () => {
                     value={searchType}
                     size='large'
                     style={{width: '150px'}}
-                    onChange={(e) => setSearchType(e.target.value)}
+                    onChange={(e) => setSearchType(e)}
                     options={searchOptions}
                 />
                 <Input.Search 
@@ -70,7 +67,7 @@ const SearchBar = () => {
                     value={selectedSemester}
                     size='large'
                     style={{width: '150px'}}
-                    onChange={(e) => setSelectedSemester(e.target.value)}
+                    onChange={(e) => setSelectedSemester(e)}
                     options={semester}
                 />
             </Input.Group>

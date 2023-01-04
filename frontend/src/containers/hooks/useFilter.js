@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import api from "../../api";
 
 const Context = createContext(null);
@@ -28,24 +28,55 @@ const FilterProvider = (props) => {
     const [searchType, setSearchType] = useState('coursename');//搜尋種類
     const [timeFilter, setTimeFilter] = useState([]);
     const [generalFilter, setGeneralFilter] = useState([]);
-    const [departFilter, setDepartFilter] = useState('');
+    const [departFilter, setDepartFilter] = useState('All');
     const [selectedSemester, setSelectedSemester] = useState('111-2');//搜尋學期
     const [searchResult, setSearchResult] = useState([]);
+    const [cstypeFilter, setCSTypeFilter] = useState('');
+    const [filter, setFilter] = useState({});
+
+    useEffect(() => {
+        setFilter({
+            searchKey: searchKey,
+            searchType: searchType,
+            timeFilter: (timeFilter.length === 0 ? 'none' : timeFilter),
+            generalFilter: (generalFilter.length === 0 ? 'none' : generalFilter ),
+            departFilter: departFilter,
+            selectedSemester: selectedSemester,
+            cstypeFilter: cstypeFilter,
+        })
+        console.log("set", filter)
+    }, []);
 
     const handleSearch = async() => {
+        setFilter({
+            searchKey: searchKey,
+            searchType: searchType,
+            timeFilter: (timeFilter.length === 0 ? 'none' : timeFilter),
+            generalFilter: (generalFilter.length === 0 ? 'none' : generalFilter ),
+            departFilter: departFilter,
+            selectedSemester: selectedSemester,
+            cstypeFilter: cstypeFilter,
+        })
         const { data } = await api.get('/search/searchcourses', {
             params: {
                 filter: {
                     searchKey: searchKey,
                     searchType: searchType,
-                    timeFilter: timeFilter,
-                    generalFilter: generalFilter,
+                    timeFilter: (timeFilter.length === 0 ? 'none' : timeFilter),
+                    generalFilter: (generalFilter.length === 0 ? 'none' : generalFilter ),
                     departFilter: departFilter,
-                    selectedSemester: selectedSemester
-                }
+                    selectedSemester: selectedSemester,
+                    cstypeFilter: cstypeFilter,
+                },
+                last_course_id: '00000'
             }
         });
-        setSearchResult(...data);
+        console.log(data)
+        //setSearchResult(...data.courses);
+    }
+
+    const scrollToBottom = () => {
+        
     }
     return(
         <Context.Provider value={{
@@ -64,7 +95,11 @@ const FilterProvider = (props) => {
             setSearchKey,
             selectedSemester,
             setSelectedSemester,
-            searchResult
+            searchResult,
+            cstypeFilter,
+            setCSTypeFilter,
+            
+            handleSearch
         }}{...props} />
     )
 }
