@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import Card from 'react-bootstrap/Card';
+import { Card } from 'antd';
 import '../css/List.css'
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import { useData } from './hooks/useContext';
@@ -32,7 +32,7 @@ export function SortableItem(props) {
         <div style={{ display:'flex',justifyContent:'space-around', alignContent:'center', width: 'inherit'}}>
             <div>
                 <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-                    <Card body className="m-3" style={{minWidth: 500, width: '70vw'}}>
+                    <Card title={props.id} className="m-3" style={{minWidth: "500px", width: '70vw'}}>
                         <div style={{display: 'flex', justifyContent:'start', alignContent:'start'}}>
                             <div style={{width:'50%'}}>
                                 <div >
