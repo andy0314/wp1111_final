@@ -3,10 +3,10 @@ import Course from "../models/Course"
 
 const router = Router();
 
-router.get('/searchcourses', async(req, res) => {
-    const { filter, last_course_id } = req.query;
+router.post('/searchcourses', async(req, res) => {
+    const { filter } = req.body;
     const { searchType, searchKey, timeFilter, generalFilter, departFilter, selectedSemester, cstypeFilter } = filter;
-    
+    console.log(filter);
     let result;
 
     if(searchKey === undefined || searchKey === ''){
@@ -23,19 +23,11 @@ router.get('/searchcourses', async(req, res) => {
     }
     else{
         res.status(403).json({messages: "Error", data: []});
-    }
-
-    if(result.length === 0){
-        res.status(200).json({messages: "Not found", data: []});
         return;
     }
 
-    if(last_course_id !== '00000'){
-        result = result.slice(1);
-    }
-
     if(result.length === 0){
-        res.status(200).json({messages: "Not found", data: []});
+        res.status(200).json({messages: "Not found1", data: []});
         return;
     }
 
@@ -64,15 +56,33 @@ router.get('/searchcourses', async(req, res) => {
     }
 
     if(departFilter !== undefined && departFilter !== 'All'){
-        result = result.filter((course) => {
-            course.department === departFilter
-        })
+        if(departFilter === "臺師大" || departFilter === "臺科大"){
+            const tmp = departFilter + "校際課程"
+            result = result.filter((course) => {
+                if( course.note !== null && course.note.includes(tmp) ){
+                    return true;
+                }
+                return false;
+            });
+        }
+        else{
+            result = result.filter((course) => {
+                for(var i = 0; i <= course.department.length; i++){
+                    if(course.department[i] === departFilter){
+                        return true;
+                    }
+                }
+                return false;
+            })
+        }
     }
 
     if(result.length === 0){
-        res.status(200).json({messages: "Not found", data: []});
+        res.status(200).json({messages: "Not found2", data: []});
+        return;
     }
     res.status(200).json({messages: "Found", data: result});
+    return;
 })
 
 router.get('/searchcourse', async(req, res) => {

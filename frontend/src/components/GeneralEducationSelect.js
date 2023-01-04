@@ -44,13 +44,16 @@ const GeneralEducationSelect = () => {
     }
 
     return(
+    <>
         <Select
             mode="multiple"
             style={{width: '100%'}}
             value={generalFilter}
             onChange={handleChange}
             options={options}
+            allowClear={true}
         />
+    </>
     )
 }
 

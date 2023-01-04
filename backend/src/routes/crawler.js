@@ -59,12 +59,12 @@ router.get('/datainit', async(_, res) =>{
                         newCourse.course_id_ = data[i][7];
                         newCourse.half_year = (data[i][8] === '半年');
                         newCourse.course_type = data[i][9];
-                        newCourse.teacher = null;
+                        newCourse.teacher = '';
                         newCourse.method = '0';
-                        newCourse.time_place = null;
-                        newCourse.max_student = null;
-                        newCourse.limit = null;
-                        newCourse.note = null;
+                        newCourse.time_place = '';
+                        newCourse.max_student = '';
+                        newCourse.limit = '';
+                        newCourse.note = '';
                         await newCourse.save();
                         loaded++;
                     }
@@ -108,7 +108,7 @@ router.get('/datainit', async(_, res) =>{
                         })
                         let time_array = [];
                         let day = ['一', '二', '三', '四', '五', '六'];
-                        let cstime = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'B', 'C', 'D']
+                        let cstime = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'A', 'B', 'C', 'D'];
                         for(var d = 0; d < time1.length; d++){
                             let day_filter_var = 0
                             for(var it = 0; it < 6; it++){

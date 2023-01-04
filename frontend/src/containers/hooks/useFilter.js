@@ -57,27 +57,22 @@ const FilterProvider = (props) => {
             selectedSemester: selectedSemester,
             cstypeFilter: cstypeFilter,
         })
-        const { data } = await api.get('/search/searchcourses', {
-            params: {
-                filter: {
-                    searchKey: searchKey,
-                    searchType: searchType,
-                    timeFilter: (timeFilter.length === 0 ? 'none' : timeFilter),
-                    generalFilter: (generalFilter.length === 0 ? 'none' : generalFilter ),
-                    departFilter: departFilter,
-                    selectedSemester: selectedSemester,
-                    cstypeFilter: cstypeFilter,
-                },
-                last_course_id: '00000'
+        console.log(filter)
+        const { data } = await api.post('/search/searchcourses', {
+            filter: {
+                searchKey: searchKey,
+                searchType: searchType,
+                timeFilter: (timeFilter.length === 0 ? 'none' : timeFilter),
+                generalFilter: (generalFilter.length === 0 ? 'none' : generalFilter ),
+                departFilter: departFilter,
+                selectedSemester: selectedSemester,
+                cstypeFilter: cstypeFilter,
             }
-        });
-        console.log(data)
-        //setSearchResult(...data.courses);
+        }).catch((e) => console.log(e));
+        console.log(data);
+        setSearchResult(data);
     }
 
-    const scrollToBottom = () => {
-        
-    }
     return(
         <Context.Provider value={{
             currTime,
