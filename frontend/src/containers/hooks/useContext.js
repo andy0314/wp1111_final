@@ -30,6 +30,7 @@ const ContextProvider = (props) => {
     const [status, setStatus] = useState({})
     const [signIn, setSignIn] = useState(false)
     const [myCourse, setMyCourse] = useState([])
+    const [save, setSave] = useState(false)
 
     const displayStatus = (s) => {
         if (s.msg) {
@@ -73,6 +74,8 @@ const ContextProvider = (props) => {
             displayStatus,
             myCourse,
             setMyCourse,
+            save,
+            setSave,
         }}{...props}/>
     )
 }

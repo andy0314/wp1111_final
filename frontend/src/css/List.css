@@ -79,3 +79,21 @@ filter: brightness(1.2);
   justify-content: center; 
   align-items: center; 
 }
+
+
+.sticky {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding: 0px;
+}
+.fix {
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+}
+h4 {
+  padding: 8px;
+  position: relative;
+}
+
