@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Layout } from 'antd';
 import { blue } from '@ant-design/colors'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
 import HomePage from './containers/HomePage';
@@ -34,11 +34,17 @@ const SideBarWrapper = styled(Sider)`
 function App() {
   const { sideBarCollapse, displayStatus, status, signIn, save, setSave, myCourse, setSortCourse } = useData();
   let location = useLocation()
+  const [fromList, setFromList] = useState(false)
   useEffect(() => {
-    if(!save){
-      setSortCourse(myCourse)
+    if(location.pathname === '/courselist'){
+      setFromList(true)
     }
-    setSave(false)
+    if(fromList && !save){
+      setSortCourse(myCourse)
+      setFromList(false)
+      setSave(false)
+    }
+   
   }, [location])
   useEffect(() => {
     displayStatus(status)

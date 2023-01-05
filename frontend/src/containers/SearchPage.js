@@ -62,10 +62,22 @@ const RowStyle = {
   ];
 const SearchPage = () => {
     const { searchResult } = useFilter()
-    const { setHold } = useData()
+    const { setHold, sortCourse, setSortCourse, myCourse, setMyCourse } = useData()
     let navigate = useNavigate()
     const handleAdd = (e) => {
-      console.log("handleAdd/e", e)
+      console.log(e)
+      const toadd = {
+        _id: e._id,
+        semester: e.semester,
+        course_id: e.course_id,
+        course_name: e.course_name,
+        teacher: e.teacher,
+        time_for_filter: e.time_for_filter,
+        time_place: e.time_place,
+      }
+      console.log("myCourse",myCourse)
+      const nSortC = [...sortCourse, toadd]
+      setMyCourse(nSortC);
     }
     const handleJump = async (semester, id) => {
       const { data: { messages, data }} = await api.get('/search/searchcourse', {
@@ -116,7 +128,7 @@ const SearchPage = () => {
           width: '10%',
           render: (_, record) => (
               <Space size="large">
-                <Button onClick={() => handleAdd(record._id)}>add</Button>
+                <Button onClick={() => handleAdd(record)}>add</Button>
               </Space>
         )},
     ];
