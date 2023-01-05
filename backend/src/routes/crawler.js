@@ -10,7 +10,10 @@ router.get('/coursedetail', async(req, res) =>{
     const puppeteer = require('puppeteer');
     const cheerio = require('cheerio');
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox','--disable-setuid-sandbox']
+      });
     const page = await browser.newPage();
 
     await page.goto(`https://nol.ntu.edu.tw/nol/coursesearch/search_result.php?current_sem=${semester}&cstype=4&csname=${courseId}&alltime=yes&allproced=yes&allsel=yes&page_cnt=15&Submit22=%E6%9F%A5%E8%A9%A2`);
