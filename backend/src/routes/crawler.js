@@ -11,7 +11,7 @@ router.get('/coursedetail', async(req, res) =>{
     const cheerio = require('cheerio');
 
     const browser = await puppeteer.launch({
-        executablePath: "/usr/bin/chromium-browser",
+        executablePath: "/usr/bin/google-chrome",
       });
     const page = await browser.newPage();
 
