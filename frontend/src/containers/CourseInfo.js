@@ -119,13 +119,13 @@ const CourseInfo = () => {
                          <Card.Grid hoverable={false} style={LgridStyle}>
                               <Title level={5} style={titleStyle}>
                                    {outline === null || outline.ACCT.join('') === '' ? '查無大綱資料' : ''}
-                                   {outline === null || outline.ACCT[0] === ' ' ? <></> : <>課程概述：{outline.ACCT[0]}<p></p></>}
-                                   {outline === null || outline.ACCT[1] === ' ' ? <></> : <>課程目標：{outline.ACCT[1]}<p></p></>} 
-                                   {outline === null || outline.ACCT[2] === ' ' ? <></> : <>課程要求：{outline.ACCT[2]}<p></p></>} 
-                                   {outline === null || outline.ACCT[3] === ' ' ? <></> : <>預期每週課後學習時數：{outline.ACCT[3]}<p></p></>} 
-                                   {outline === null || outline.ACCT[4] === ' ' ? <></> : <>Office Hours：{outline.ACCT[4]}<p></p></>} 
-                                   {outline === null || outline.ACCT[5] === ' ' ? <></> : <>參考書目：{outline.ACCT[5]}<p></p></>} 
-                                   {outline === null || outline.ACCT[6] === ' ' || outline.ACCT[6] === '' ? <></> : <>指定閱讀：{outline.ACCT[6]}<p></p></>} 
+                                   {outline === null || outline.ACCT[0] === '' ? <></> : <>課程概述：{outline.ACCT[0]}<p></p></>}
+                                   {outline === null || outline.ACCT[1] === '' ? <></> : <>課程目標：{outline.ACCT[1]}<p></p></>} 
+                                   {outline === null || outline.ACCT[2] === '' ? <></> : <>課程要求：{outline.ACCT[2]}<p></p></>} 
+                                   {outline === null || outline.ACCT[3] === '' ? <></> : <>預期每週課後學習時數：{outline.ACCT[3]}<p></p></>} 
+                                   {outline === null || outline.ACCT[4] === '' ? <></> : <>Office Hours：{outline.ACCT[4]}<p></p></>} 
+                                   {outline === null || outline.ACCT[5] === '' ? <></> : <>參考書目：{outline.ACCT[5]}<p></p></>} 
+                                   {outline === null || outline.ACCT[6] === '' || outline.ACCT[6] === '' ? <></> : <>指定閱讀：{outline.ACCT[6]}<p></p></>} 
                               </Title>
                          </Card.Grid>
                     </Card>
