@@ -15,12 +15,13 @@ yarn start
 
 ## 每位組員之負責項目
 ### 張佑亘
-後端課程資料抓取、後端課程篩選、前端架構和搜尋篩選
+後端課程資料抓取、後端課程篩選、前端架構和搜尋篩選。
 
 ### 陳元彬
+主要負責志願序拖曳表、投影片製作及前期統整與測試。
 
 ### 吳沛昀
-主要負責課表的view，前端context和location。協助axios前後端溝通。
+主要負責課表的view，前端context和deploy。協助axios前後端溝通，使Docker container環境support puppeteer。
 ## 對課程的建議
 
 ## 12/28更新(by 張佑亘)
