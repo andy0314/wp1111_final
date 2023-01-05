@@ -24,7 +24,7 @@ const RowStyle = {
 
 const SearchPage = () => {
     const { searchResult } = useFilter()
-    const { setHold } = useData()
+    const { setHold, myCourse, setMyCourse, sortCourse } = useData()
     let navigate = useNavigate()
     const handleAdd = (e) => {
       console.log(e)
