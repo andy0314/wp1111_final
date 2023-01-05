@@ -13,12 +13,13 @@ yarn server
 (wait until server log shows "insert (a number)")
 yarn start
 
-### 匯入課程
-
 ## 每位組員之負責項目
 ### 張佑亘
 
 ### 陳元彬
+
+### 吳沛昀
+主要負責課表的view，前端context和location。協助axios前後端溝通。
 ## 對課程的建議
 
 ## 12/28更新(by 張佑亘)

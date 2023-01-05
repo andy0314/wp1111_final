@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import Route from './routes'
+import path from "path";
 import "dotenv-defaults/config.js";
 
 import { dataInit, dataInitWithCrawler } from './init';
