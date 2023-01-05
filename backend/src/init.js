@@ -1,4 +1,4 @@
-import Course from './models/Course';
+import Course from './models/course';
 import Courses from "../course.json";
 
 const dataInit = async() => {

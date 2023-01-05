@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect, useNavigate } from "react";
 import api from "../../api";
 
 const Context = createContext(null);
@@ -48,6 +48,7 @@ const FilterProvider = (props) => {
     }, []);
 
     const handleSearch = async() => {
+        let navigate = useNavigate()
         setSearching(true);
         setFilter({
             searchKey: searchKey,
@@ -71,6 +72,7 @@ const FilterProvider = (props) => {
         }).catch((e) => console.log(e));
         setSearching(false);
         setSearchResult(data);
+        navigate('/')
     }
 
     return(

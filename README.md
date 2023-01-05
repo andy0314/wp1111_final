@@ -1,6 +1,18 @@
 # 網服專題開發紀錄
 ## localhost安裝
 ### .env
+create .env file, insert MONGO_URL.
+### command
+(at root)
+cd backend 
+yarn install --freeze-lockfile
+cd ../frontend
+yarn install --freeze-lockfile
+cd ..
+yarn server
+(wait until server log shows "insert (a number)")
+yarn start
+
 ### 匯入課程
 
 ## 每位組員之負責項目
