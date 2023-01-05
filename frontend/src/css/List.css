@@ -37,6 +37,39 @@
   }
 }
 
+.sticky {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  padding: 0px;
+}
+
+.fix {
+  position: fixed;
+  bottom: 20px;
+  padding: 0px;
+}
+
+h4 {
+  padding: 8px;
+  position: relative;
+}
+
+.C_L_Adjust{
+  display:flex;
+  justify-content: space-evenly;
+  align-content: center;
+  width: inherit;
+}
+
+.leftAdjust{
+  width : 60px;
+}
+
+.topAdjust {
+  height : 17px;
+}
+
 .button{
   margin: 0 5px; 
   width: 35px; 
@@ -80,20 +113,6 @@ filter: brightness(1.2);
   align-items: center; 
 }
 
-
-.sticky {
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  padding: 0px;
+.rightAdjust{
+  width : 150px;
 }
-.fix {
-  position: fixed;
-  bottom: 0;
-  padding: 0px;
-}
-h4 {
-  padding: 8px;
-  position: relative;
-}
-

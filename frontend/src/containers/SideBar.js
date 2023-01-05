@@ -41,16 +41,12 @@ const StyledButton = styled(Button)`
 const SideBar = () => {
     const navigate = useNavigate();
 
-    const { sideBarCollapse, setSideBarCollapse, openedCourses } = useData();
+    const { sideBarCollapse, setSideBarCollapse, openedCourses, me } = useData();
 
     const items = [
-        getItem('主畫面', '/', <HomeOutlined />),
-        getItem('搜尋課程', '/search', <SearchOutlined />),
+        getItem('搜尋課程', '/', <SearchOutlined />),
         getItem('已選課表', '/coursetable', <TableOutlined />),
         getItem('選課志願序', '/courselist', <OrderedListOutlined />),
-        getItem('課程資訊', 'coursedetail', <CommentOutlined />,
-            openedCourses.map((e, i) => getItem(`${e.teacher}  ${e.name}`, '/coursedetail/1101/' + i, null))
-        )
     ]
 
     const changeCollapse = () => {
@@ -70,7 +66,9 @@ const SideBar = () => {
                 items={items}
                 mode='inline'
             />
-            <Button/>
+            <ButtonWrapper>
+                {me === '' ? '' : `Hello ${me}`}
+            </ButtonWrapper>
         </Wrapper>
     )
 }

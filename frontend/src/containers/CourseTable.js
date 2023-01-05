@@ -47,7 +47,6 @@ const hanbleTopass = (to) => {
     })
     if(to){
         to.map((crs, key) => {
-            console.log(crs)
             if(crs){
                 crs.time_for_filter.map((koma, kkey) => {
                     let i = Math.floor(koma / 15)

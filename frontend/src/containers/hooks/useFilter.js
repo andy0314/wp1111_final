@@ -33,6 +33,7 @@ const FilterProvider = (props) => {
     const [searchResult, setSearchResult] = useState([]);
     const [cstypeFilter, setCSTypeFilter] = useState('');
     const [filter, setFilter] = useState({});
+    const [searching, setSearching] = useState(false);
 
     useEffect(() => {
         setFilter({
@@ -44,10 +45,10 @@ const FilterProvider = (props) => {
             selectedSemester: selectedSemester,
             cstypeFilter: cstypeFilter,
         })
-        console.log("set", filter)
     }, []);
 
     const handleSearch = async() => {
+        setSearching(true);
         setFilter({
             searchKey: searchKey,
             searchType: searchType,
@@ -57,7 +58,6 @@ const FilterProvider = (props) => {
             selectedSemester: selectedSemester,
             cstypeFilter: cstypeFilter,
         })
-        console.log(filter)
         const { data } = await api.post('/search/searchcourses', {
             filter: {
                 searchKey: searchKey,
@@ -69,7 +69,7 @@ const FilterProvider = (props) => {
                 cstypeFilter: cstypeFilter,
             }
         }).catch((e) => console.log(e));
-        console.log(data);
+        setSearching(false);
         setSearchResult(data);
     }
 
@@ -93,6 +93,9 @@ const FilterProvider = (props) => {
             searchResult,
             cstypeFilter,
             setCSTypeFilter,
+
+            searching,
+            setSearching,
             
             handleSearch
         }}{...props} />

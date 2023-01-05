@@ -4,7 +4,6 @@ import { blue } from '@ant-design/colors'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
-import HomePage from './containers/HomePage';
 import SearchPage from './containers/SearchPage';
 import CourseTable from './containers/CourseTable';
 import CourseList from './containers/CourseList';
@@ -68,8 +67,7 @@ function App() {
 
           <Content style={{height: 'calc(100% - 120px)', position: 'fixed', top: "120px", width:'100%', overflow: "scroll"}}>
             <Routes>
-            <Route path='/' element={signIn ? (<HomePage />) : (<SignIn />)} />
-              <Route path='/search' element={signIn ? (<SearchPage />) : (<SignIn />)} />
+            <Route path='/' element={signIn ? (<SearchPage />) : (<SignIn />)} />
               <Route path='/coursedetail/:courseyear/:courseid' element={signIn ? (<CourseInfo />) : (<SignIn />)} />
               <Route path='/coursetable' element={signIn ? (<CourseTable />) : (<SignIn />)} />
               <Route path='/courselist' element={signIn ? (<CourseList />) : (<SignIn />)}/>

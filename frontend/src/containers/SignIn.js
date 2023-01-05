@@ -26,7 +26,7 @@ const encryptPW = async (pass) => {
     return hash
 }
 const getData = async (myname) => {
-    const { data: { messages, data } } = await api.post('/test/course',{
+    const { data: { messages, data } } = await api.post('/course/course',{
         name: myname,
     });
     setMyCourse(data)
@@ -47,7 +47,7 @@ const handleSignUp = async (name, pass) => {
     }
     else{
         const hash = await encryptPW(pass)
-        const { data: { messages, data } } = await api.post('/test/signup',{
+        const { data: { messages, data } } = await api.post('/course/addcourse',{
                 name: name,
                 password: hash,
         });
@@ -74,7 +74,7 @@ const handleSignIn = async (name, pass) => {
         })
     }
     else {
-        const { data: { messages, data } } = await api.post('/test/login',{
+        const { data: { messages, data } } = await api.post('/user/login',{
                 name: name,
         });
         if(messages === "Doesn'tExist")        

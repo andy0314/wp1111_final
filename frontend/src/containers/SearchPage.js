@@ -23,24 +23,38 @@ const RowStyle = {
 }
 
 const SearchPage = () => {
-    const { searchResult } = useFilter()
-    const { setHold, myCourse, setMyCourse, sortCourse, setSortCourse } = useData()
+    const { searchResult, searching } = useFilter()
+    const { setHold, myCourse, setMyCourse, sortCourse, setSortCourse, me, displayStatus } = useData()
     let navigate = useNavigate()
-    const handleAdd = (e) => {
-      
-      const toadd = {
-        _id: e._id,
-        semester: e.semester,
-        course_id: e.course_id,
-        course_name: e.course_name,
-        teacher: e.teacher,
-        time_for_filter: e.time_for_filter,
-        time_place: e.time_place,
+    const handleAdd = async (e) => {
+      if(me === ''){
+        displayStatus({
+          type: 'error',
+          msg: 'Please log in first'
+        })
+        return;
       }
-      console.log("myCourse",myCourse)
-      const nSortC = [...sortCourse, toadd]
-      setMyCourse(nSortC);
-      setSortCourse(nSortC);
+      const found = myCourse.find(element => element._id === e._id)
+      if(!found){
+        const toadd = {
+          _id: e._id,
+          semester: e.semester,
+          course_id: e.course_id,
+          course_name: e.course_name,
+          teacher: e.teacher,
+          time_for_filter: e.time_for_filter,
+          time_place: e.time_place,
+        }
+        const { data: { messages, data } } = await api.post('/course/addcourse',{
+          name: me,
+          courseid: e._id,
+        });
+  console.log("handleAdd/messages: ", messages)
+        const nSortC = [...sortCourse, toadd]
+        setMyCourse(nSortC);
+        setSortCourse(nSortC);
+      }
+
     }
     const handleJump = async (semester, id) => {
       const { data: { messages, data }} = await api.get('/search/searchcourse', {
@@ -98,7 +112,7 @@ const SearchPage = () => {
 
     return (
         <Wrapper>
-            <Table columns={columns} dataSource={searchResult.data} />
+            <Table columns={columns} loading={searching} dataSource={searchResult.data} />
         </Wrapper>
            
         // <OutWrapper>
