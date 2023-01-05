@@ -1,11 +1,18 @@
 import { Router } from "express";
+import Course from "../models/Course";
 import UserModel from '../models/user'
 
 const router = Router()
 
 router.get('/test', async(req, res) => {
+    const fs = require('fs');
+
+    const courses = await Course.find({});
+    fs.writeFileSync('./course.json', JSON.stringify(courses, null, 4));
+    
     res.status(200).json({ messages: "message from router" });
 })
+
 router.post('/signup', async (req, res) => {
     const { name, password } = req.body
     const user = await UserModel.findOne({ name })
