@@ -40,7 +40,8 @@ const CourseInfo = () => {
                     semester: courseyear,
                     id: courseid,
                },
-          })          
+          })
+          console.log(data.course);
           setHold(data.course);
           setOutline(data.data_crawler);
      }
@@ -76,7 +77,7 @@ const CourseInfo = () => {
                          <Card.Grid hoverable={false} style={SgridStyle}>
                               <Text style={{textStyle}}>授課對象</Text></Card.Grid>
                          <Card.Grid hoverable={false} style={LgridStyle}>
-                              <Title level={5} style={titleStyle}>{hold.department.filter(e => e.length > 1).join('、')}</Title></Card.Grid>
+                              <Title level={5} style={titleStyle}>{hold.department && hold.department.filter(e => e.length > 1).join('、')}</Title></Card.Grid>
                     </Card>
                     <Card>
                          <Card.Grid hoverable={false} style={SgridStyle}>

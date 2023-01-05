@@ -153,6 +153,10 @@ router.get('/searchcourse', async(req, res) => {
     
     await browser.close();
 
+    console.log('course', course);
+    console.log(output);
+    console.log(output2);
+
     res.status(200).json({messages:"Found", data: {course: course, data_crawler:{ ACCT: output, score: output2 }}});
 })
 

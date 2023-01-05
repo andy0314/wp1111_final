@@ -35,7 +35,6 @@ router.get('/coursedetail', async(req, res) =>{
         res.status(200).json({ messages: "detail not found", data: null });
     }
     const link = "https://nol.ntu.edu.tw/nol/coursesearch/" + data[0];
-    console.log(link);
     await page.goto(link);
 
     let detailBody = await page.content();
@@ -64,6 +63,8 @@ router.get('/coursedetail', async(req, res) =>{
     }
     
     await browser.close();
+
+    
 
     res.status(200).json({ messages: "message from router", data:{ ACCT: output, score: output2 } })
 })

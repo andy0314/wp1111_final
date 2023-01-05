@@ -24,7 +24,7 @@ const RowStyle = {
 
 const SearchPage = () => {
     const { searchResult, searching } = useFilter()
-    const { setHold, myCourse, setMyCourse, sortCourse, setSortCourse, me, displayStatus } = useData()
+    const { setHold, myCourse, setMyCourse, sortCourse, setSortCourse, me, displayStatus, setOutline } = useData()
     let navigate = useNavigate()
     const handleAdd = async (e) => {
       if(me === ''){
@@ -63,7 +63,8 @@ const SearchPage = () => {
              id: id,
         },
       })
-      setHold(data)
+      setHold(data.course);
+      setOutline(data.data_crawler);
       navigate('/coursedetail/' + semester + '/' + id)
     }
     const columns = [
