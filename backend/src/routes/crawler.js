@@ -1,6 +1,5 @@
 import { Router } from "express";
 import Course from "../models/course";
-import puppeteer from "puppeteer-core";
 
 const router = Router();
 
@@ -9,11 +8,20 @@ router.get('/coursedetail', async(req, res) =>{
     const courseId = req.query.courseId;
 
     const cheerio = require('cheerio');
-
-    const browser = await puppeteer.launch({
-        executablePath: "/usr/bin/google-chrome",
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      });
+    let browser;
+    if(!process.env.NODE_ENV){
+        const puppeteer = require('puppeteer');
+        browser = await puppeteer.launch({
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+    }
+      else {
+        const puppeteer = require('puppeteer-core')
+        browser = await puppeteer.launch({
+            executablePath: "/usr/bin/google-chrome",
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        });
+      }
     const page = await browser.newPage();
 
     await page.goto(`https://nol.ntu.edu.tw/nol/coursesearch/search_result.php?current_sem=${semester}&cstype=4&csname=${courseId}&alltime=yes&allproced=yes&allsel=yes&page_cnt=15&Submit22=%E6%9F%A5%E8%A9%A2`);
