@@ -1,5 +1,6 @@
 import { Router } from "express";
 import Course from "../models/course";
+import puppeteer from "puppeteer-core";
 
 const router = Router();
 
@@ -7,12 +8,10 @@ router.get('/coursedetail', async(req, res) =>{
     const semester = req.query.semester;
     const courseId = req.query.courseId;
 
-    const puppeteer = require('puppeteer');
     const cheerio = require('cheerio');
 
     const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox','--disable-setuid-sandbox']
+        executablePath: "/usr/bin/chromium-browser",
       });
     const page = await browser.newPage();
 
