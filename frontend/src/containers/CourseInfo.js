@@ -34,16 +34,6 @@ const titleStyle = {
 const CourseInfo = () => {
      let {courseid, courseyear} = useParams()
      const { hold, setHold, outline, setOutline } = useData()
-     const getOutline = async () =>{
-          const {data: {messages, data}} = await api.get('/crawler/coursedetail',{
-               params: {
-                    semester: courseyear,
-                    courseId: courseid
-               },
-          })
-          console.log(data);
-          setOutline(data);
-     }
      const getCourse = async () =>{
           const { data: { messages, data }} = await api.get('/search/searchcourse', {
                params: {
@@ -51,8 +41,8 @@ const CourseInfo = () => {
                     id: courseid,
                },
           })          
-          setHold(data)
-          getOutline()
+          setHold(data.course);
+          setOutline(data.data_crawler);
      }
 
      return ( 

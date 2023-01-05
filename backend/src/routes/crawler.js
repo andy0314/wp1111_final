@@ -1,5 +1,4 @@
 import { Router } from "express";
-import Course from "../models/course";
 
 const router = Router();
 
