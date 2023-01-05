@@ -46,7 +46,7 @@ const handleSignUp = async (name, pass) => {
     }
     else{
         const hash = await encryptPW(pass)
-        const { data: { messages, data } } = await api.post('/course/addcourse',{
+        const { data: { messages, data } } = await api.post('/user/signup',{
                 name: name,
                 password: hash,
         });
