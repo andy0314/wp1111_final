@@ -3,7 +3,6 @@ import { useData } from './hooks/useContext'
 import SignUp from '../components/SignUp'
 import Login from '../components/Login'
 import api from "../api"
-import { ClassNames } from '@emotion/react'
 
 const bcrypt = require('bcryptjs')
 
