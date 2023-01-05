@@ -4,8 +4,7 @@ import mongoose from 'mongoose';
 import Route from './routes'
 import "dotenv-defaults/config.js";
 
-
-
+import { dataInit, dataInitWithCrawler } from './init';
 
 const url = process.env.MONGO_URL
 const dboptions = {
@@ -17,6 +16,7 @@ mongoose.set("strictQuery", true);
 
 mongoose.connect(url, dboptions).then((res) => {
     console.log("mongo db connection created");
+    dataInit();
 })
 const app = express();
 app.use(cors());
