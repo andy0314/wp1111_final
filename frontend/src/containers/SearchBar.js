@@ -1,6 +1,7 @@
 import { blue } from '@ant-design/colors'
 import styled from 'styled-components'
 import { Button, Input, Select } from 'antd'
+import { useNavigate } from 'react-router-dom';
 import { useData } from './hooks/useContext'
 import { useFilter } from './hooks/useFilter'
 import SearchFilterModal from '../components/SearchFilterModal'
@@ -42,7 +43,11 @@ const InputWrapper = styled.div`
 const SearchBar = () => {
     const { searchKey, setSearchKey, searchType, setSearchType, selectedSemester, setSelectedSemester, handleSearch } = useFilter()
     const { setSearchModalOpen } = useData();
-
+    let navigate = useNavigate()
+    const hancleNaviSearch = () => {
+        navigate('/')
+        handleSearch()
+    }
     const handleModalOpen = () => {
         setSearchModalOpen(true);
     }
@@ -59,7 +64,7 @@ const SearchBar = () => {
                 <Input.Search 
                     style={{width: 'calc(100% - 300px)'}}
                     size='large'
-                    onSearch={handleSearch}
+                    onSearch={hancleNaviSearch}
                     value={searchKey}
                     onChange={(e) => setSearchKey(e.target.value)}
                 />
