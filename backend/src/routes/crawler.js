@@ -3,12 +3,6 @@ import Course from "../models/Course";
 
 const router = Router();
 
-function delay(n){
-    return new Promise(function(resolve){
-        setTimeout(resolve,n*1000);
-    });
-}
-
 router.get('/coursedetail', async(req, res) =>{
     const semester = req.query.semester;
     const courseId = req.query.courseId;
@@ -24,9 +18,11 @@ router.get('/coursedetail', async(req, res) =>{
     let body = await page.content();
     let $ = await cheerio.load(body);
 
-    const data = await $("table").find('tbody > tr[align="center"] > td > a').toArray().map(ele => $(ele).attr('href')).filter(href => href.includes("course_id"));
+    let data = await $("table").find('tbody > tr[align="center"] > td > a').toArray().map(ele => $(ele).attr('href'));
+    console.log(data);
+    data = data.filter(href => href !== undefined && href.includes("course_id"));
     if(data.length === 0){
-        res.status(403).json({ messages: "detail not found", data: null });
+        res.status(200).json({ messages: "detail not found", data: null });
     }
     const link = "https://nol.ntu.edu.tw/nol/coursesearch/" + data[0];
     console.log(link);

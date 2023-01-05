@@ -31,7 +31,8 @@ const ContextProvider = (props) => {
     const [signIn, setSignIn] = useState(false)
     const [myCourse, setMyCourse] = useState([])
     const [save, setSave] = useState(false)
-    const [hold, setHold] = useState()
+    const [hold, setHold] = useState();
+    const [outline, setOutline] = useState(null);
     const displayStatus = (s) => {
         if (s.msg) {
             const { type, msg } = s
@@ -78,6 +79,8 @@ const ContextProvider = (props) => {
             setSave,
             hold,
             setHold,
+            outline,
+            setOutline
         }}{...props}/>
     )
 }

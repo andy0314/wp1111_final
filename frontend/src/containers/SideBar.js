@@ -66,10 +66,11 @@ const SideBar = () => {
             </ButtonWrapper>
             <Menu
                 onClick={(e) => navigate(e.key)}
-                style={{height: "calc(100% - 50px)", width: "100%", background: blue[0]}}
+                style={{height: "calc(100% - 100px)", width: "100%", background: blue[0]}}
                 items={items}
                 mode='inline'
             />
+            <Button/>
         </Wrapper>
     )
 }

@@ -4,6 +4,7 @@ import Courses from "../course.json";
 const dataInit = async() => {
     await Course.deleteMany({})
     await Course.insertMany(Courses)
+    console.log(`insert ${Courses.length} courses`)
 }
 
 const dataInitWithCrawler = async() => {
